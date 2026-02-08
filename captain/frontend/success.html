@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed | Captains-Signature</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/logo.png" alt="Captains-Signature">
+                <span>CAPTAINS-SIGNATURE</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#clothing" class="nav-link">Clothing</a>
+                <a href="index.html#shoes" class="nav-link">Shoes</a>
+                <a href="index.html#accessories" class="nav-link">Accessories</a>
+            </div>
+            
+            <div class="nav-icons">
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Success Section -->
+    <main class="success container">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h1 class="success-title">Order Confirmed!</h1>
+            <p class="success-message">Thank you for your purchase. Your order has been successfully placed and is being processed.</p>
+            
+            <div class="success-details">
+                <div class="success-card">
+                    <h3><i class="fas fa-receipt"></i> Order Details</h3>
+                    <p><strong>Order Number:</strong> <span id="order-number">CS-<%= Date.now().toString().slice(-8) %></span></p>
+                    <p><strong>Order Date:</strong> <span id="order-date"><%= new Date().toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    }) %></span></p>
+                    <p><strong>Estimated Delivery:</strong> <span id="delivery-date"><%= new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    }) %></span></p>
+                </div>
+                
+                <div class="success-card">
+                    <h3><i class="fas fa-shipping-fast"></i> Shipping Information</h3>
+                    <p id="shipping-address">Loading...</p>
+                    <p><strong>Shipping Method:</strong> Standard (3-5 business days)</p>
+                </div>
+            </div>
+            
+            <div class="success-actions">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Continue Shopping
+                </a>
+                <button class="btn btn-secondary" id="print-receipt">
+                    <i class="fas fa-print"></i> Print Receipt
+                </button>
+            </div>
+            
+            <div class="success-note">
+                <h3><i class="fas fa-envelope"></i> What's Next?</h3>
+                <p>You will receive an order confirmation email shortly with all the details of your purchase. 
+                We'll notify you when your order ships and provide tracking information.</p>
+                <p>If you have any questions, please contact our customer service at 
+                <strong>support@captains-signature.com</strong> or call <strong>(555) 123-4567</strong>.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Captains-Signature">
+                        <span>CAPTAINS-SIGNATURE</span>
+                    </div>
+                    <p>Premium men's fashion for the modern individual. Quality craftsmanship meets contemporary design.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#clothing">Clothing</a>
+                    <a href="index.html#shoes">Shoes</a>
+                    <a href="index.html#accessories">Accessories</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Shipping Policy</a>
+                    <a href="#">Returns & Exchanges</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Ave, New York, NY</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@captains-signature.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Captains-Signature. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            clearCart(); // Clear cart on success page
+            
+            // Mobile menu
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Load shipping address from session storage
+            const shippingAddress = sessionStorage.getItem('shippingAddress');
+            if (shippingAddress) {
+                document.getElementById('shipping-address').textContent = shippingAddress;
+            }
+            
+            // Print receipt
+            document.getElementById('print-receipt').addEventListener('click', () => {
+                window.print();
+            });
+            
+            // Generate random order number if not already set
+            if (!document.getElementById('order-number').textContent.includes('CS-')) {
+                const orderNum = 'CS-' + Date.now().toString().slice(-8);
+                document.getElementById('order-number').textContent = orderNum;
+            }
+        });
+    </script>
+</body>
+</html>

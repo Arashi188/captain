@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Captains-Signature</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/logo.png" alt="Captains-Signature">
+                <span>CAPTAINS-SIGNATURE</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#clothing" class="nav-link">Clothing</a>
+                <a href="index.html#shoes" class="nav-link">Shoes</a>
+                <a href="index.html#accessories" class="nav-link">Accessories</a>
+            </div>
+            
+            <div class="nav-icons">
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="cart.html" class="icon-btn cart-btn active" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <main class="cart container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <span>Shopping Cart</span>
+        </div>
+        
+        <h1 class="page-title">Shopping Cart</h1>
+        
+        <div class="cart-grid">
+            <div class="cart-items">
+                <div class="cart-header">
+                    <div class="cart-header-product">Product</div>
+                    <div class="cart-header-price">Price</div>
+                    <div class="cart-header-quantity">Quantity</div>
+                    <div class="cart-header-total">Total</div>
+                    <div class="cart-header-remove"></div>
+                </div>
+                
+                <div class="cart-items-list" id="cart-items-list">
+                    <!-- Cart items loaded via JavaScript -->
+                    <div class="cart-empty" id="cart-empty">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>Your cart is empty</h3>
+                        <p>Add items to get started</p>
+                        <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <h2>Order Summary</h2>
+                
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="cart-shipping">$0.00</span>
+                </div>
+                
+                <div class="summary-row">
+                    <span>Estimated Tax</span>
+                    <span id="cart-tax">$0.00</span>
+                </div>
+                
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                
+                <a href="checkout.html" class="btn btn-primary btn-checkout" id="checkout-btn">Proceed to Checkout</a>
+                
+                <div class="cart-promo">
+                    <h3>Have a promo code?</h3>
+                    <div class="promo-input">
+                        <input type="text" placeholder="Enter code" id="promo-code">
+                        <button class="btn btn-secondary" id="apply-promo">Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cart-actions">
+            <a href="index.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Continue Shopping
+            </a>
+            <button class="btn btn-secondary" id="clear-cart">
+                <i class="fas fa-trash"></i> Clear Cart
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Captains-Signature">
+                        <span>CAPTAINS-SIGNATURE</span>
+                    </div>
+                    <p>Premium men's fashion for the modern individual. Quality craftsmanship meets contemporary design.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#clothing">Clothing</a>
+                    <a href="index.html#shoes">Shoes</a>
+                    <a href="index.html#accessories">Accessories</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Shipping Policy</a>
+                    <a href="#">Returns & Exchanges</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Ave, New York, NY</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@captains-signature.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Captains-Signature. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            loadCartItems();
+            
+            // Mobile menu
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Clear cart button
+            document.getElementById('clear-cart').addEventListener('click', () => {
+                if (confirm('Are you sure you want to clear your cart?')) {
+                    clearCart();
+                    loadCartItems();
+                    updateCartCount();
+                }
+            });
+            
+            // Checkout button
+            document.getElementById('checkout-btn').addEventListener('click', (e) => {
+                const cart = getCart();
+                if (cart.items.length === 0) {
+                    e.preventDefault();
+                    alert('Your cart is empty. Add items before checking out.');
+                }
+            });
+            
+            // Apply promo code
+            document.getElementById('apply-promo').addEventListener('click', () => {
+                const code = document.getElementById('promo-code').value.trim();
+                if (code === 'CAPTAIN10') {
+                    alert('Promo code applied! 10% discount will be applied at checkout.');
+                } else if (code) {
+                    alert('Invalid promo code.');
+                }
+            });
+        });
+        
+        function loadCartItems() {
+            const cart = getCart();
+            const cartItemsList = document.getElementById('cart-items-list');
+            const cartEmpty = document.getElementById('cart-empty');
+            
+            if (cart.items.length === 0) {
+                cartEmpty.style.display = 'flex';
+                document.querySelector('.cart-header').style.display = 'none';
+                document.getElementById('checkout-btn').classList.add('disabled');
+                updateSummary(0);
+                return;
+            }
+            
+            cartEmpty.style.display = 'none';
+            document.querySelector('.cart-header').style.display = 'grid';
+            document.getElementById('checkout-btn').classList.remove('disabled');
+            
+            cartItemsList.innerHTML = '';
+            
+            let subtotal = 0;
+            
+            cart.items.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-product">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h3>${item.name}</h3>
+                            <p>Size: ${item.size || 'N/A'} | Color: ${item.color || 'N/A'}</p>
+                        </div>
+                    </div>
+                    <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                    </div>
+                    <div class="cart-item-total">$${itemTotal.toFixed(2)}</div>
+                    <div class="cart-item-remove">
+                        <button class="remove-btn" data-id="${item.id}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+                
+                cartItemsList.appendChild(cartItem);
+            });
+            
+            updateSummary(subtotal);
+            
+            // Add event listeners to buttons
+            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    updateQuantity(btn.getAttribute('data-id'), -1);
+                    loadCartItems();
+                    updateCartCount();
+                });
+            });
+            
+            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    updateQuantity(btn.getAttribute('data-id'), 1);
+                    loadCartItems();
+                    updateCartCount();
+                });
+            });
+            
+            document.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    removeFromCart(btn.getAttribute('data-id'));
+                    loadCartItems();
+                    updateCartCount();
+                });
+            });
+        }
+        
+        function updateSummary(subtotal) {
+            const shipping = subtotal > 150 ? 0 : 15;
+            const tax = subtotal * 0.08; // 8% tax
+            const total = subtotal + shipping + tax;
+            
+            document.getElementById('cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('cart-shipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+            document.getElementById('cart-tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

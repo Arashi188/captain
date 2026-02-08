@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captains-Signature | Premium Men's Fashion</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/logo.png" alt="Captains-Signature">
+                <span>CAPTAINS-SIGNATURE</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="#clothing" class="nav-link">Clothing</a>
+                <a href="#shoes" class="nav-link">Shoes</a>
+                <a href="#accessories" class="nav-link">Accessories</a>
+            </div>
+            
+            <div class="nav-icons">
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video -->
+    <section class="hero">
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="assets/images/hero-video-placeholder.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">ELEVATE YOUR STYLE</h1>
+            <p class="hero-subtitle">Premium men's fashion crafted for the modern captain</p>
+            <a href="#clothing" class="btn btn-primary">SHOP NOW</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section featured" id="clothing">
+        <div class="container">
+            <h2 class="section-title">Men's Clothing</h2>
+            <div class="products-grid" id="clothing-products">
+                <!-- Products loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="shoes">
+        <div class="container">
+            <h2 class="section-title">Footwear Collection</h2>
+            <div class="products-grid" id="shoes-products">
+                <!-- Products loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="accessories">
+        <div class="container">
+            <h2 class="section-title">Accessories</h2>
+            <div class="products-grid" id="accessories-products">
+                <!-- Products loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <h2>FREE SHIPPING ON ORDERS OVER $150</h2>
+                <p>Premium quality. No compromises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Captains-Signature">
+                        <span>CAPTAINS-SIGNATURE</span>
+                    </div>
+                    <p>Premium men's fashion for the modern individual. Quality craftsmanship meets contemporary design.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="#clothing">Clothing</a>
+                    <a href="#shoes">Shoes</a>
+                    <a href="#accessories">Accessories</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Shipping Policy</a>
+                    <a href="#">Returns & Exchanges</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Ave, New York, NY</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@captains-signature.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Captains-Signature. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="modal search-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Search Products</h2>
+            <div class="search-box">
+                <input type="text" placeholder="Search for clothing, shoes, accessories...">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            updateCartCount();
+            
+            // Mobile menu toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Search modal
+            const searchBtn = document.querySelector('.search-btn');
+            const searchModal = document.querySelector('.search-modal');
+            const modalClose = document.querySelector('.modal-close');
+            
+            searchBtn.addEventListener('click', () => {
+                searchModal.classList.add('active');
+            });
+            
+            modalClose.addEventListener('click', () => {
+                searchModal.classList.remove('active');
+            });
+            
+            // Close modal on outside click
+            window.addEventListener('click', (e) => {
+                if (e.target === searchModal) {
+                    searchModal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

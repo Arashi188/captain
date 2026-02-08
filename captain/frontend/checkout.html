@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Captains-Signature</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/logo.png" alt="Captains-Signature">
+                <span>CAPTAINS-SIGNATURE</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#clothing" class="nav-link">Clothing</a>
+                <a href="index.html#shoes" class="nav-link">Shoes</a>
+                <a href="index.html#accessories" class="nav-link">Accessories</a>
+            </div>
+            
+            <div class="nav-icons">
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <main class="checkout container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <a href="cart.html">Cart</a> / <span>Checkout</span>
+        </div>
+        
+        <h1 class="page-title">Checkout</h1>
+        
+        <div class="checkout-grid">
+            <div class="checkout-form-section">
+                <form id="checkout-form">
+                    <div class="form-section">
+                        <h2><i class="fas fa-user"></i> Contact Information</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="full-name">Full Name *</label>
+                                <input type="text" id="full-name" required>
+                                <div class="error-message" id="name-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" required>
+                                <div class="error-message" id="email-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" required>
+                                <div class="error-message" id="phone-error"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2><i class="fas fa-map-marker-alt"></i> Shipping Address</h2>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="address">Street Address *</label>
+                                <input type="text" id="address" required>
+                                <div class="error-message" id="address-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" required>
+                                <div class="error-message" id="city-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State *</label>
+                                <select id="state" required>
+                                    <option value="">Select State</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                                <div class="error-message" id="state-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">ZIP Code *</label>
+                                <input type="text" id="zip" required>
+                                <div class="error-message" id="zip-error"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h2><i class="fas fa-credit-card"></i> Payment Information</h2>
+                        <div class="payment-methods">
+                            <div class="payment-method active">
+                                <i class="fab fa-cc-stripe"></i>
+                                <span>Stripe</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fab fa-cc-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Credit Card</span>
+                            </div>
+                        </div>
+                        <p class="payment-note">For demo purposes, payment processing is simulated. No real payments will be processed.</p>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="cart.html" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to Cart
+                        </a>
+                        <button type="submit" class="btn btn-primary" id="submit-order">
+                            <i class="fas fa-lock"></i> Place Order
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="checkout-summary">
+                <h2>Order Summary</h2>
+                
+                <div class="checkout-items" id="checkout-items">
+                    <!-- Cart items loaded via JavaScript -->
+                </div>
+                
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="checkout-subtotal">$0.00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="checkout-shipping">$0.00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Tax</span>
+                        <span id="checkout-tax">$0.00</span>
+                    </div>
+                    
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="checkout-total">$0.00</span>
+                    </div>
+                </div>
+                
+                <div class="shipping-info">
+                    <h3><i class="fas fa-shipping-fast"></i> Shipping Information</h3>
+                    <p>Standard shipping: 3-5 business days</p>
+                    <p>Free shipping on orders over $150</p>
+                    <p>Express shipping available at checkout</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Modal -->
+    <div class="modal loading-modal" id="loading-modal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <h3>Processing Your Order</h3>
+            <p>Please wait while we complete your purchase...</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Captains-Signature">
+                        <span>CAPTAINS-SIGNATURE</span>
+                    </div>
+                    <p>Premium men's fashion for the modern individual. Quality craftsmanship meets contemporary design.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#clothing">Clothing</a>
+                    <a href="index.html#shoes">Shoes</a>
+                    <a href="index.html#accessories">Accessories</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Customer Service</h3>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Shipping Policy</a>
+                    <a href="#">Returns & Exchanges</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Ave, New York, NY</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> support@captains-signature.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Captains-Signature. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/checkout.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            loadCheckoutItems();
+            
+            // Mobile menu
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Payment methods
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', () => {
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    method.classList.add('active');
+                });
+            });
+            
+            // Form submission
+            const form = document.getElementById('checkout-form');
+            form.addEventListener('submit', handleCheckout);
+            
+            // Initialize validation
+            initValidation();
+        });
+        
+        function loadCheckoutItems() {
+            const cart = getCart();
+            const checkoutItems = document.getElementById('checkout-items');
+            
+            checkoutItems.innerHTML = '';
+            
+            let subtotal = 0;
+            
+            cart.items.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                const itemElement = document.createElement('div');
+                itemElement.className = 'checkout-item';
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="checkout-item-info">
+                        <h4>${item.name}</h4>
+                        <p>Size: ${item.size || 'N/A'} | Qty: ${item.quantity}</p>
+                    </div>
+                    <div class="checkout-item-price">$${itemTotal.toFixed(2)}</div>
+                `;
+                
+                checkoutItems.appendChild(itemElement);
+            });
+            
+            updateCheckoutSummary(subtotal);
+        }
+        
+        function updateCheckoutSummary(subtotal) {
+            const shipping = subtotal > 150 ? 0 : 15;
+            const tax = subtotal * 0.08;
+            const total = subtotal + shipping + tax;
+            
+            document.getElementById('checkout-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('checkout-shipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+            document.getElementById('checkout-tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('checkout-total').textContent = `$${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
